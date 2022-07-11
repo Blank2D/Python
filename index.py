@@ -1,0 +1,2 @@
+class index:
+    print("Hola")
