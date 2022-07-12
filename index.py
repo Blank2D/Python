@@ -134,6 +134,23 @@ class index:
                             price = int(input("Ingrese el precio del articulo\n>>>"))
                             cursor.execute("UPDATE items SET price = " + str(price) + " where id = " + str(editar))
                             con.commit()
+
+                    elif seleccion == 3:
+                        cursor.execute("select name from items ") 
+                        listaDeStock = cursor.fetchall()
+                        contador = 0
+                        for fila in listaDeStock:
+                            contador = contador + 1
+                            print(str(contador)+fila[0])
+                            
+
+                            
+                        id = input(int("Ingrese el producto que desea eliminar: "))
+                        cursor.execute("DELETE from items where id = " + str(id))
+                        con.commit()
+                        print("Se borro tu wea")
+
+                        
                     elif seleccion == 4:
                         break 
 
