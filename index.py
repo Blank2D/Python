@@ -67,7 +67,36 @@ class index:
                     print("(4) <- Volver")
                     seleccion = int(input())
                     if seleccion == 1:
-                        print("blank culiao XD")
+                        print("---------------------------------------------------------")
+                        print("Porfavor ingrese el NOMBRE del producto que desea agregar")
+                        print("---------------------------------------------------------")
+
+                        nombre1 = str(input())
+
+                        print("--------------------------------------------------------------")
+                        print("Porfavor ingrese el DESCRIPCION del producto que desea agregar")
+                        print("--------------------------------------------------------------")
+
+                        descripcion = str(input())
+
+                        print("--------------------------------------------------------")
+                        print("Porfavor ingrese el STOCK del producto que desea agregar")
+                        print("--------------------------------------------------------")
+                        
+                        stock = input()
+
+                        print("---------------------------------------------------------")
+                        print("Porfavor ingrese el PRECIO del producto que desea agregar")
+                        print("---------------------------------------------------------")
+
+                        precio = input()
+
+                        cursor.execute("INSERT INTO items(name, description, stock, price) VAlUES('" + nombre1 + "', '" + descripcion + "' , '" + stock + 
+                        "' , '" + precio + "' )")
+
+                        con.commit()
+
+                        
                     elif seleccion == 2:
                         cursor.execute("select * from items")
                         listaDeStock = cursor.fetchall()
@@ -87,9 +116,20 @@ class index:
                             print("No se puede editar la ID de un producto")
                         elif editar2 == 2:
                             nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
-                            cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
+                            cursor.execute("UPDATE items SET name = '" + nombre + "' where id = " + str(editar))
+                            con.commit()
                         elif editar2 == 3:
-                            print("")
+                            description = input("Ingrese la descripción del articulo\n>>>")
+                            cursor.execute("UPDATE items SET description = '" + description + "' where id = " + str(editar))
+                            con.commit()
+                        elif editar2 == 4:
+                            stock = int(input("Ingrese el stock del articulo\n>>>"))
+                            cursor.execute("UPDATE items SET stock = " + str(stock) + " where id = " + str(editar))
+                            con.commit()
+                        elif editar2 == 5:
+                            price = int(input("Ingrese el precio del articulo\n>>>"))
+                            cursor.execute("UPDATE items SET price = " + str(price) + " where id = " + str(editar))
+                            con.commit()
                     elif seleccion == 4:
                         break 
 
@@ -98,4 +138,3 @@ class index:
 
     if __name__ == "__main__":
         main()
-
