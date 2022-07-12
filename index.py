@@ -50,10 +50,14 @@ class index:
                     contador = contador+1
                     print(str(contador)+".-"+ fila[0])
                 id = int(input("Que producto desea comprar?: "))
-                cursor.execute("select name,stock from items")
-                listaDeStock = cursor.fetchone()
+                cursor.execute("SELECT stock from items where id = " + str(id)) 
+                stockNuevo = cursor.fetchall()
+                cursor.execute("UPDATE items SET stock = " + str(int(stockNuevo[0][0]-1))+ " where id = " + str(id))
+                con.commit()
+                cursor.execute("select name,stock from items where id =" + str(id))
+                listaDeStock = cursor.fetchall()
                 print(listaDeStock)
-                break
+                sleep(1)
                 
 
             elif option == 4:
