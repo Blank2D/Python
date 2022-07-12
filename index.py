@@ -11,11 +11,11 @@ class index:
 
         print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
         print("(1) Consultar Stock\n" +
-        "(2) Mostrar lista de productos para ver su caracteristicas\n"+
-        "(3) Acceder a la inter Agregarfaz de venta de productos \n"+
-        "(4) Historial de ventas de productos\n" +
-        "(5) Interfaz Agregar, eliminar y editar productos\n"+
-        "(6) Revisar ventas de procutos semanales")
+        "(2) Mostrar lista de productos para ver su caracteristicas\n"+ # Blank
+        "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
+        "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
+        "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
+        "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE
         option = int(input(""))
         while option != 0:
             if option == 1:
