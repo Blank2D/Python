@@ -64,7 +64,36 @@ class index:
                     print("(4) <- Volver")
                     seleccion = int(input())
                     if seleccion == 1:
-                        print("blank culiao XD")
+                        print("---------------------------------------------------------")
+                        print("Porfavor ingrese el NOMBRE del producto que desea agregar")
+                        print("---------------------------------------------------------")
+
+                        nombre1 = str(input())
+
+                        print("--------------------------------------------------------------")
+                        print("Porfavor ingrese el DESCRIPCION del producto que desea agregar")
+                        print("--------------------------------------------------------------")
+
+                        descripcion = str(input())
+
+                        print("--------------------------------------------------------")
+                        print("Porfavor ingrese el STOCK del producto que desea agregar")
+                        print("--------------------------------------------------------")
+                        
+                        stock = input()
+
+                        print("---------------------------------------------------------")
+                        print("Porfavor ingrese el PRECIO del producto que desea agregar")
+                        print("---------------------------------------------------------")
+
+                        precio = input()
+
+                        cursor.execute("INSERT INTO items(name, description, stock, price) VAlUES('" + nombre1 + "', '" + descripcion + "' , '" + stock + 
+                        "' , '" + precio + "' )")
+
+                        con.commit()
+
+                        
                     elif seleccion == 2:
                         cursor.execute("select * from items")
                         listaDeStock = cursor.fetchall()
