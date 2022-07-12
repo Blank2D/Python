@@ -29,11 +29,22 @@ class index:
             elif option == 2:
                 print("")
             elif option == 3:
-                print("")
+                print(" 1.- Intel Core i5-12400 \n 2.- Intel Core i3 10105 \n 3.- Intel Core i3-10100F \n 4.- RTX 3080 XLR8 \n 5.- PNY GeForce RTX 3070 \n 6.- PNY GeForce RTX 3050 ")
+                id = int(input("Que producto desea comprar?: "))
+                cursor.execute("select name,stock from items")
+                listaDeStock = cursor.fetc()
+
+                for fila in listaDeStock:
+                    print(fila[0],fila[1])
+                break
+                
+
             elif option == 4:
                 print("")
             elif option == 5:
                 print("")
+
+        
              
     if __name__ == "__main__":
         main()
