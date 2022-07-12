@@ -15,7 +15,7 @@ class index:
         "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
         "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
         "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
-        "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE
+        "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE noo
         option = int(input(""))
         while option != 0:
             if option == 1:
