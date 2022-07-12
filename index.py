@@ -9,6 +9,7 @@ class index:
         con = conexion.conn
         cursor = con.cursor()
         
+        seleccion = 1005
         option = 10
         while option != 0:
 
@@ -46,46 +47,49 @@ class index:
             elif option == 4:
                 print("")
             elif option == 5:
-                print("____________________________________")
-                print("(1) Agregar producto")
-                print("(2) Editar Producto")
-                print("(3) Eliminar Producto")
-                print("(4) <- Volver")
-                seleccion = int(input())
-                if seleccion == 1:
-                    print("blank culiao XD")
-                elif seleccion == 2:
-                    cursor.execute("select * from items")
-                    listaDeStock = cursor.fetchall()
-                    print("¿Qué producto desea editar?")
-                    for fila in listaDeStock:
-                        print("ID: " + str(fila[0]) + " NOMBRE: " + fila[1])
-                    editar = int(input(">>>"))
-                    print("¿Qué cosa desea editar?")
-                    cursor.execute("show columns from items")
-                    listaDeColumnas = cursor.fetchall()
-                    contador = 0
-                    for columna in listaDeColumnas:
-                        contador = contador + 1
-                        print("(" + str(contador) + ") " + columna[0].upper())
-                    editar2 = int(input(">>>"))
-                    if editar2 == 1:
-                        print("No se puede editar la ID de un producto")
-                    elif editar2 == 2:
-                        nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
-                        
-                        cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
-
-                        cursor.execute("Select * from items")
+                while seleccion != 0:
+                    print("____________________________________")
+                    print("(1) Agregar producto")
+                    print("(2) Editar Producto")
+                    print("(3) Eliminar Producto")
+                    print("(4) <- Volver")
+                    seleccion = int(input())
+                    if seleccion == 1:
+                        print("blank culiao XD")
+                    elif seleccion == 2:
+                        cursor.execute("select * from items")
                         listaDeStock = cursor.fetchall()
-                        print("------------------------------------------------------------------------------") 
+                        print("¿Qué producto desea editar?")
                         for fila in listaDeStock:
-                            print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
-                             fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
+                            print("ID: " + str(fila[0]) + " NOMBRE: " + fila[1])
+                        editar = int(input(">>>"))
+                        print("¿Qué cosa desea editar?")
+                        cursor.execute("show columns from items")
+                        listaDeColumnas = cursor.fetchall()
+                        contador = 0
+                        for columna in listaDeColumnas:
+                            contador = contador + 1
+                            print("(" + str(contador) + ") " + columna[0].upper())
+                        editar2 = int(input(">>>"))
+                        if editar2 == 1:
+                            print("No se puede editar la ID de un producto")
+                        elif editar2 == 2:
+                            nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
+                            
+                            cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
+
+                            cursor.execute("Select * from items")
+                            listaDeStock = cursor.fetchall()
                             print("------------------------------------------------------------------------------") 
-                        
-                    elif editar2 == 3:
-                        print("")
+                            for fila in listaDeStock:
+                                print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
+                                fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
+                                print("------------------------------------------------------------------------------") 
+                            
+                        elif editar2 == 3:
+                            print("")
+                    elif seleccion == 4:
+                        break 
 
 
                     
