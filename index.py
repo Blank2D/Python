@@ -10,20 +10,15 @@ class index:
         option = int(input(""))
         while option != 0:
             if option == 1:
-                print 
+                print("")
             elif option == 2:
-                print
+                print("")
             elif option == 3:
-                print
+                print("")
             elif option == 4:
-                print 
+                print("")
             elif option == 5:
-                print
-            elif option == 0:
-                break
-            elif option == 6:
-                break
-            break
-        #COMENTARIO 1 
+                print("")
+             
     if __name__ == "__main__":
         main()
