@@ -65,6 +65,26 @@ class index:
                     for columna in listaDeColumnas:
                         contador = contador + 1
                         print("(" + str(contador) + ") " + columna[0].upper())
+                    editar2 = int(input(">>>"))
+                    if editar2 == 1:
+                        print("No se puede editar la ID de un producto")
+                    elif editar2 == 2:
+                        nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
+                        
+                        cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
+
+                        cursor.execute("Select * from items")
+                        listaDeStock = cursor.fetchall()
+                        print("------------------------------------------------------------------------------") 
+                        for fila in listaDeStock:
+                            print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
+                             fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
+                            print("------------------------------------------------------------------------------") 
+                        
+                    elif editar2 == 3:
+                        print("")
+
+
                     
 
     if __name__ == "__main__":
