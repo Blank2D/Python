@@ -1,3 +1,4 @@
+from time import sleep
 from unicodedata import name
 from conexionDB import conexionDB
 
@@ -8,25 +9,27 @@ class index:
         con = conexion.conn
         cursor = con.cursor()
         
-
-        print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
-        print("(1) Consultar Stock\n" +
-        "(2) Mostrar lista de productos para ver su caracteristicas\n"+ # Blank
-        "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
-        "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
-        "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
-        "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE noo
-        option = int(input(""))
+        option = 10
         while option != 0:
+
+            print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
+            print("(1) Consultar Stock\n" +
+            "(2) Mostrar lista de productos para ver su caracteristicas\n"+ # Blank
+            "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
+            "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
+            "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
+            "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE noo
+
+            option = int(input(""))
             if option == 1:
-                cursor.execute("select name,stock from items where") #borren el where de la query !!!!!!!!!!!!!!!
+                cursor.execute("select name,stock from items ") 
                 listaDeStock = cursor.fetchall()
                 
                 for fila in listaDeStock:
                     print(fila[0] + " stock : " + str(fila[1]))
-                break  
+                sleep (1)
+                  
 
-            #a
 
             elif option == 2:
                 cursor.execute("Select * from items")
@@ -36,36 +39,40 @@ class index:
                     print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
                      fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
                     print("------------------------------------------------------------------------------") 
-                break
+
 
             elif option == 3:
                 print("")
             elif option == 4:
                 print("")
             elif option == 5:
-                print("____________________________________")
-                print("(1) Agregar producto")
-                print("(2) Editar Producto")
-                print("(3) Eliminar Producto")
-                print("(4) <- Volver")
-                seleccion = int(input())
-                if seleccion == 1:
-                    print("blank culiao XD")
-                elif seleccion == 2:
-                    cursor.execute("select * from items")
-                    listaDeStock = cursor.fetchall()
-                    print("¿Qué producto desea editar?")
-                    for fila in listaDeStock:
-                        print("ID: " + str(fila[0]) + " NOMBRE: " + fila[1])
-                    editar = int(input(">>>"))
-                    print("¿Qué cosa desea editar?")
-                    cursor.execute("show columns from items")
-                    listaDeColumnas = cursor.fetchall()
-                    contador = 0
-                    for columna in listaDeColumnas:
-                        contador = contador + 1
-                        print("(" + str(contador) + ") " + columna[0].upper())
-                    
+                seleccion = 5
+                while seleccion != 4:
+                    print("____________________________________")
+                    print("(1) Agregar producto")
+                    print("(2) Editar Producto")
+                    print("(3) Eliminar Producto")
+                    print("(4) <- Volver")
+                    seleccion = int(input())
+                    if seleccion == 1:
+                        print("blank culiao XD")
+                    elif seleccion == 2:
+                        cursor.execute("select * from items")
+                        listaDeStock = cursor.fetchall()
+                        print("¿Qué producto desea editar?")
+                        for fila in listaDeStock:
+                            print("ID: " + str(fila[0]) + " NOMBRE: " + fila[1])
+                        editar = int(input(">>>"))
+                        print("¿Qué cosa desea editar?")
+                        cursor.execute("show columns from items")
+                        listaDeColumnas = cursor.fetchall()
+                        contador = 0
+                        for columna in listaDeColumnas:
+                            contador = contador + 1
+                            print("(" + str(contador) + ") " + columna[0].upper())
+                    elif seleccion == 4:
+                        break
+
 
     if __name__ == "__main__":
         main()
