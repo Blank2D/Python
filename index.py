@@ -40,10 +40,19 @@ class index:
                     print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
                      fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
                     print("------------------------------------------------------------------------------") 
-
+                sleep(1)
 
             elif option == 3:
-                print("")
+                print(" 1.- Intel Core i5-12400 \n 2.- Intel Core i3 10105 \n 3.- Intel Core i3-10100F \n 4.- RTX 3080 XLR8 \n 5.- PNY GeForce RTX 3070 \n 6.- PNY GeForce RTX 3050 ")
+                id = int(input("Que producto desea comprar?: "))
+                cursor.execute("select name,stock from items")
+                listaDeStock = cursor.fetc()
+
+                for fila in listaDeStock:
+                    print(fila[0],fila[1])
+                break
+                
+
             elif option == 4:
                 print("")
             elif option == 5:
@@ -104,17 +113,7 @@ class index:
                             print("No se puede editar la ID de un producto")
                         elif editar2 == 2:
                             nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
-                            
                             cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
-
-                            cursor.execute("Select * from items")
-                            listaDeStock = cursor.fetchall()
-                            print("------------------------------------------------------------------------------") 
-                            for fila in listaDeStock:
-                                print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
-                                fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
-                                print("------------------------------------------------------------------------------") 
-                            
                         elif editar2 == 3:
                             print("")
                     elif seleccion == 4:
