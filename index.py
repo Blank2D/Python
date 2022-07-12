@@ -1,3 +1,4 @@
+from time import sleep
 from unicodedata import name
 from conexionDB import conexionDB
 
@@ -8,25 +9,27 @@ class index:
         con = conexion.conn
         cursor = con.cursor()
         
-
-        print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
-        print("(1) Consultar Stock\n" +
-        "(2) Mostrar lista de productos para ver su caracteristicas\n"+ # Blank
-        "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
-        "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
-        "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
-        "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE noo
-        option = int(input(""))
+        option = 10
         while option != 0:
+
+            print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
+            print("(1) Consultar Stock\n" +
+            "(2) Mostrar lista de productos para ver su caracteristicas\n"+ # Blank
+            "(3) Acceder a la interfaz Agregar de venta de productos \n"+ #pablo SOLO HACER UNA VENTA QUE SE REFLEJE EN EL STOCK DEL PRODUCTO 
+            "(4) Historial de ventas de productos\n" + #SE POSPONEN TODAVIA NOS SE HACE
+            "(5) Interfaz Agregar, eliminar y editar productos\n"+ # BLANK AGREGAR // PABLO ELIMINAR // FUKA EDITAR
+            "(6) Revisar ventas de procutos semanales") # SE POSPONE TODAVIA NO SE HACE noo
+
+            option = int(input(""))
             if option == 1:
-                cursor.execute("select name,stock from items where") #borren el where de la query !!!!!!!!!!!!!!!
+                cursor.execute("select name,stock from items ") 
                 listaDeStock = cursor.fetchall()
                 
                 for fila in listaDeStock:
                     print(fila[0] + " stock : " + str(fila[1]))
-                break  
+                sleep (1)
+                  
 
-            #a
 
             elif option == 2:
                 cursor.execute("Select * from items")
@@ -36,7 +39,7 @@ class index:
                     print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
                      fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
                     print("------------------------------------------------------------------------------") 
-                break
+
 
             elif option == 3:
                 print("")
