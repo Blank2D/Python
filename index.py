@@ -42,7 +42,7 @@ class index:
                     print("------------------------------------------------------------------------------") 
                 sleep(1)
 
-            elif option == 3:
+            elif option == 3: #POR TERMINAR
                 cursor.execute("select name from items ") 
                 listaDeStock = cursor.fetchall()
                 contador = 0
