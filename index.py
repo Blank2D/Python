@@ -1,5 +1,9 @@
+from conexionDB import conexionDB
+
+
 class index:
     def main(): 
+        conexion = conexionDB()
         print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
         print("(1) Consultar Stock\n" +
         "(2) Mostrar lista de productos para ver su caracteristicas\n"+
