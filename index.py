@@ -1,10 +1,14 @@
+from unicodedata import name
 from conexionDB import conexionDB
 
 
 class index:
     def main(): 
         conexion = conexionDB()
-        records=conexion.records
+        con = conexion.conn
+        cursor = con.cursor()
+        
+
         print("Hola, Bienvenido a la interfaz, Porfavor seleccione una opción")
         print("(1) Consultar Stock\n" +
         "(2) Mostrar lista de productos para ver su caracteristicas\n"+
@@ -15,8 +19,14 @@ class index:
         option = int(input(""))
         while option != 0:
             if option == 1:
-                for row in records:
-                    print(row[3])
+                cursor.execute("select name,stock from items where")
+                listaDeStock = cursor.fetchall()
+                
+                for fila in listaDeStock:
+                    print(fila[0] + " stock : " + str(fila[1]))
+                break    
+                print("")
+
             elif option == 2:
                 print("")
             elif option == 3:
@@ -28,3 +38,4 @@ class index:
              
     if __name__ == "__main__":
         main()
+
