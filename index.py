@@ -25,7 +25,6 @@ class index:
                 for fila in listaDeStock:
                     print(fila[0] + " stock : " + str(fila[1]))
                 break    
-                print("")
 
             elif option == 2:
                 print("")
