@@ -43,13 +43,16 @@ class index:
                 sleep(1)
 
             elif option == 3:
-                print(" 1.- Intel Core i5-12400 \n 2.- Intel Core i3 10105 \n 3.- Intel Core i3-10100F \n 4.- RTX 3080 XLR8 \n 5.- PNY GeForce RTX 3070 \n 6.- PNY GeForce RTX 3050 ")
+                cursor.execute("select name from items ") 
+                listaDeStock = cursor.fetchall()
+                contador = 0
+                for fila in listaDeStock:
+                    contador = contador+1
+                    print(str(contador)+".-"+ fila[0])
                 id = int(input("Que producto desea comprar?: "))
                 cursor.execute("select name,stock from items")
-                listaDeStock = cursor.fetc()
-
-                for fila in listaDeStock:
-                    print(fila[0],fila[1])
+                listaDeStock = cursor.fetchone()
+                print(listaDeStock)
                 break
                 
 
