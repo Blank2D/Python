@@ -24,10 +24,20 @@ class index:
                 
                 for fila in listaDeStock:
                     print(fila[0] + " stock : " + str(fila[1]))
-                break    
+                break  
+
+            
 
             elif option == 2:
-                print("")
+                cursor.execute("Select * from items")
+                listaDeStock = cursor.fetchall()
+                print("------------------------------------------------------------------------------") 
+                for fila in listaDeStock:
+                    print("id: " + str(fila[0]) + "\nNombre: " + fila[1] + "\nDescrpción: " +
+                     fila[2] + "\nStock: " + str(fila[3]) + "\nprecio: " + str(fila[4]))
+                    print("------------------------------------------------------------------------------") 
+                break
+
             elif option == 3:
                 print("")
             elif option == 4:
