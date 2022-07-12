@@ -75,9 +75,20 @@ class index:
                             print("No se puede editar la ID de un producto")
                         elif editar2 == 2:
                             nombre = input("Ingrese el nuevo nombre del articulo\n>>>")
-                            cursor.execute("update items set name = '" + nombre + "' where id = " + str(editar))
+                            cursor.execute("UPDATE items SET name = '" + nombre + "' where id = " + str(editar))
+                            con.commit()
                         elif editar2 == 3:
-                            print("")
+                            description = input("Ingrese la descripción del articulo\n>>>")
+                            cursor.execute("UPDATE items SET description = '" + description + "' where id = " + str(editar))
+                            con.commit()
+                        elif editar2 == 4:
+                            stock = int(input("Ingrese el stock del articulo\n>>>"))
+                            cursor.execute("UPDATE items SET stock = " + str(stock) + " where id = " + str(editar))
+                            con.commit()
+                        elif editar2 == 5:
+                            price = int(input("Ingrese el precio del articulo\n>>>"))
+                            cursor.execute("UPDATE items SET price = " + str(price) + " where id = " + str(editar))
+                            con.commit()
                     elif seleccion == 4:
                         break 
 
@@ -86,4 +97,3 @@ class index:
 
     if __name__ == "__main__":
         main()
-
