@@ -19,7 +19,7 @@ class index:
         option = int(input(""))
         while option != 0:
             if option == 1:
-                cursor.execute("select name,stock from items where")
+                cursor.execute("select name,stock from items where") #borren el where de la query !!!!!!!!!!!!!!!
                 listaDeStock = cursor.fetchall()
                 
                 for fila in listaDeStock:
@@ -33,8 +33,30 @@ class index:
             elif option == 4:
                 print("")
             elif option == 5:
-                print("")
-             
+                print("____________________________________")
+                print("(1) Agregar producto")
+                print("(2) Editar Producto")
+                print("(3) Eliminar Producto")
+                print("(4) <- Volver")
+                seleccion = int(input())
+                if seleccion == 1:
+                    print("blank culiao XD")
+                elif seleccion == 2:
+                    cursor.execute("select * from items")
+                    listaDeStock = cursor.fetchall()
+                    print("¿Qué producto desea editar?")
+                    for fila in listaDeStock:
+                        print("ID: " + str(fila[0]) + " NOMBRE: " + fila[1])
+                    editar = int(input(">>>"))
+                    print("¿Qué cosa desea editar?")
+                    cursor.execute("show columns from items")
+                    listaDeColumnas = cursor.fetchall()
+                    contador = 0
+                    for columna in listaDeColumnas:
+                        contador = contador + 1
+                        print("(" + str(contador) + ") " + columna[0].upper())
+                    
+
     if __name__ == "__main__":
         main()
 
